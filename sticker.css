@@ -1,0 +1,273 @@
+@font-face {
+  font-family: 'FWC2026';
+  src: url('assets/fonts/FWC2026.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FIFA26';
+  src: url('assets/fonts/fifa-26.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+#sticker-card {
+  background-color: #01c1cc;
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 470px;
+  user-select: none;
+  pointer-events: none;
+}
+
+#sticker-top-logo {
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  height: auto;
+  width: 110px;
+}
+
+#sticker-overlay {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  height: auto;
+  width: 85%;
+}
+
+#sticker-top {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sticker-country {
+  align-items: flex-end;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-right: 3px;
+  position: relative;
+  z-index: 4;
+}
+
+#sticker-country-image-shell,
+#sticker-country-image-frame {
+  border-radius: 50%;
+  border-bottom-right-radius: 0;
+  box-sizing: border-box;
+}
+
+#sticker-country-image-shell {
+  position: relative;
+  z-index: 5;
+  padding: 2px;
+  width: 66px;
+  height: 66px;
+  margin-bottom: -5px;
+}
+
+#sticker-country-image-frame {
+  background-color: #ffffff14;
+  border: 2px solid #fff;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#sticker-country-image-frame img {
+  display: block;
+  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#sticker-country-name {
+  color: transparent;
+  font-family: 'FIFA26', 'Poppins', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  -webkit-text-stroke: 2px #fff;
+  width: 1ch;
+  word-break: break-all;
+  text-align: center;
+  line-height: 0.8;
+  margin-bottom: 10px;
+}
+
+.sticker-photo-wrap {
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 8px;
+  margin-inline: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sticker-player-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  --sticker-shadow-color: 0, 128, 128;
+  filter: drop-shadow(0 18px 24px rgba(var(--sticker-shadow-color), 0.53));
+}
+
+.sticker-player-image--shadow-pulse {
+  animation: sticker-shadow-pulse 1.6s ease-in-out infinite;
+}
+
+@property --sticker-shadow-strength {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0.53;
+}
+
+@keyframes sticker-shadow-pulse {
+  0%,
+  100% {
+    --sticker-shadow-strength: 0;
+  }
+
+  50% {
+    --sticker-shadow-strength: 0.53;
+  }
+}
+
+.sticker-player-image {
+  filter: drop-shadow(
+    0 18px 24px
+      rgba(var(--sticker-shadow-color), var(--sticker-shadow-strength, 0.53))
+  );
+}
+
+.sticker-content {
+  background-color: #00807f;
+  border-radius: 64px 64px 0 64px;
+  color: #fff;
+  line-height: 1.1;
+  padding: 8px 16px;
+  text-align: center;
+}
+
+#sticker-player-name {
+  text-transform: uppercase;
+  font-family: 'FWC2026', 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+#sticker-player-meta {
+  font-weight: 300;
+}
+
+#sticker-club {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+#sticker-club-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 6px;
+  padding-right: 6px;
+}
+
+#sticker-club-row .sticker-content {
+  flex: 1;
+}
+
+#sticker-panini-logo {
+  display: block;
+  height: 1.95em;
+  width: auto;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+  transform: translateX(8px);
+}
+
+#result-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#sticker-actions {
+  width: 100%;
+}
+
+#download-btn {
+  background: linear-gradient(120deg, var(--gold-1), var(--gold-2));
+  border: none;
+  border-radius: 32px;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+#download-btn:hover {
+  background: linear-gradient(120deg, var(--gold-2), var(--gold-1));
+  transform: translateY(-2px);
+  filter: saturate(1.08);
+}
+
+#downloadIcon {
+  height: auto;
+  margin-right: 8px;
+  width: 20px;
+}
+
+@media (max-width: 500px) {
+  #sticker-top-logo {
+    width: 70px;
+  }
+
+  #sticker-country-image-shell {
+    width: 50px;
+    height: 50px;
+  }
+
+  #sticker-country-name {
+    font-size: 48px;
+  }
+
+  #sticker-player-name {
+    font-size: 24px;
+  }
+
+  #sticker-player-meta {
+    font-size: 14px;
+  }
+
+  #sticker-club {
+    font-size: 14px;
+  }
+}

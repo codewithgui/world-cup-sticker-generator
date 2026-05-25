@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Figurinhas da Copa do Mundo 2026</title>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../sticker.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="container">
+        <header class="hero">
+          <h1>Gerador de Figurinhas da Copa do Mundo 2026</h1>
+          <p>Crie sua carta personalizada de jogador e exporte como PNG.</p>
+
+          <div class="host-strip">
+            <span>Países-sede:</span>
+            <img
+              src="../assets/images/flags/united-states.png"
+              alt="Bandeira dos EUA"
+            />
+            <img
+              src="../assets/images/flags/canada.png"
+              alt="Bandeira do Canadá"
+            />
+            <img
+              src="../assets/images/flags/mexico.png"
+              alt="Bandeira do México"
+            />
+          </div>
+        </header>
+
+        <div id="sticker-generator">
+          <section class="card form-card">
+            <h2>Informações do Jogador</h2>
+
+            <form id="stickerForm" novalidate>
+              <div class="field-group">
+                <label for="playerPhoto">Foto do Jogador</label>
+                <div class="upload" id="uploadBox">
+                  <img
+                    id="uploadPreview"
+                    src="../assets/images/player-placeholder.png"
+                    alt="Prévia do jogador"
+                  />
+                  <div class="upload-text">
+                    <strong>Clique para enviar</strong>
+                    <span>PNG ou JPG, até 5MB</span>
+                    <span class="hint">Imagem padrão: player_photo.png</span>
+                  </div>
+                </div>
+                <input id="playerPhoto" type="file" accept="image/*" hidden />
+              </div>
+
+              <div class="field-group">
+                <label for="name">Nome do Jogador</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Digite o nome do jogador"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="birthDate">Data de Nascimento</label>
+                <input id="birthDate" name="birthDate" type="date" required />
+              </div>
+
+              <div class="split-grid">
+                <div class="field-group">
+                  <label for="height">Altura (cm)</label>
+                  <input
+                    id="height"
+                    name="height"
+                    type="number"
+                    min="100"
+                    max="250"
+                    placeholder="175"
+                    required
+                  />
+                </div>
+                <div class="field-group">
+                  <label for="weight">Peso (kg)</label>
+                  <input
+                    id="weight"
+                    name="weight"
+                    type="number"
+                    min="30"
+                    max="150"
+                    placeholder="70"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="country">País</label>
+                <select id="country" name="country" required>
+                  <option value="">Selecione um país</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="golden" class="checkbox-label">
+                  <input id="golden" name="golden" type="checkbox" />
+                  <span class="checkbox-custom" aria-hidden="true"></span>
+                  <span class="checkbox-text">Cartão Dourado</span>
+                </label>
+              </div>
+
+              <div class="field-group">
+                <label for="club">Clube</label>
+                <input
+                  id="club"
+                  name="club"
+                  type="text"
+                  placeholder="Clube (ex.: Santos (BRA))"
+                />
+              </div>
+            </form>
+          </section>
+
+          <section id="result-section">
+            <div id="sticker-card" class="sticker-card" aria-live="polite">
+              <img
+                id="sticker-top-logo"
+                src="../assets/images/logos/fifa-world-cup-2026-logo.png"
+                alt="Logo da Copa do Mundo 2026"
+              />
+
+              <img
+                id="sticker-overlay"
+                src="../assets/images/overlays/silhouette-overlay.png"
+                alt="Forma do overlay da figurinha"
+              />
+
+              <div id="sticker-top">
+                <div id="sticker-main">
+                  <div class="sticker-photo-wrap">
+                    <img
+                      id="sticker-player-image"
+                      class="sticker-player-image"
+                      src="../assets/images/person-silhouette.png"
+                      alt="Foto do jogador"
+                    />
+                  </div>
+
+                  <div id="sticker-info-block">
+                    <section
+                      class="sticker-content"
+                      aria-label="informações do jogador"
+                    >
+                      <h2 id="sticker-player-name"></h2>
+                      <p id="sticker-player-meta"></p>
+                    </section>
+                  </div>
+                </div>
+
+                <div class="sticker-country">
+                  <div id="sticker-country-image-shell">
+                    <div id="sticker-country-image-frame">
+                      <img
+                        id="sticker-country-image"
+                        src="#"
+                        alt="Bandeira do país"
+                      />
+                    </div>
+                  </div>
+                  <p id="sticker-country-name" aria-hidden="true"></p>
+                </div>
+              </div>
+
+              <div id="sticker-club-row">
+                <section class="sticker-content" aria-label="clube">
+                  <p id="sticker-club"></p>
+                </section>
+                <img
+                  id="sticker-panini-logo"
+                  src="../assets/images/logos/panini-logo.svg"
+                  alt="Logo da Panini"
+                />
+              </div>
+            </div>
+
+            <div id="sticker-actions">
+              <button id="download-btn" class="download-btn" type="button">
+                <img
+                  id="downloadIcon"
+                  src="../assets/images/icons/download-icon.svg"
+                  alt="Ícone de download"
+                />
+                Baixar Figurinha
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="footnote" aria-hidden="false">
+        Seus dados não são salvos — eles ficam apenas no navegador e serão
+        perdidos se você recarregar a página.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

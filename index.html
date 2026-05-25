@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Cup 2026 Sticker Generator</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="sticker.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="container">
+        <header class="hero">
+          <h1>World Cup 2026 Sticker Generator</h1>
+          <p>Create your custom player card and export it as a PNG.</p>
+
+          <div class="host-strip">
+            <span>Host Nations:</span>
+            <img src="./assets/images/flags/united-states.png" alt="USA flag" />
+            <img src="./assets/images/flags/canada.png" alt="Canada flag" />
+            <img src="./assets/images/flags/mexico.png" alt="Mexico flag" />
+          </div>
+        </header>
+
+        <div id="sticker-generator">
+          <section class="card form-card">
+            <h2>Player Information</h2>
+
+            <form id="stickerForm" novalidate>
+              <div class="field-group">
+                <label for="playerPhoto">Player Photo</label>
+                <div class="upload" id="uploadBox">
+                  <img
+                    id="uploadPreview"
+                    src="./assets/images/player-placeholder.png"
+                    alt="Player preview"
+                  />
+                  <div class="upload-text">
+                    <strong>Click to upload</strong>
+                    <span>PNG or JPG, up to 5MB</span>
+                    <span class="hint"
+                      >Placeholder image: player_photo.png</span
+                    >
+                  </div>
+                </div>
+                <input id="playerPhoto" type="file" accept="image/*" hidden />
+              </div>
+
+              <div class="field-group">
+                <label for="name">Player Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter player name"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="birthDate">Birth Date</label>
+                <input id="birthDate" name="birthDate" type="date" required />
+              </div>
+
+              <div class="split-grid">
+                <div class="field-group">
+                  <label for="height">Height (cm)</label>
+                  <input
+                    id="height"
+                    name="height"
+                    type="number"
+                    min="100"
+                    max="250"
+                    placeholder="175"
+                    required
+                  />
+                </div>
+                <div class="field-group">
+                  <label for="weight">Weight (kg)</label>
+                  <input
+                    id="weight"
+                    name="weight"
+                    type="number"
+                    min="30"
+                    max="150"
+                    placeholder="70"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                  <option value="">Select a country</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="golden" class="checkbox-label">
+                  <input id="golden" name="golden" type="checkbox" />
+                  <span class="checkbox-custom" aria-hidden="true"></span>
+                  <span class="checkbox-text">Golden Card</span>
+                </label>
+              </div>
+
+              <div class="field-group">
+                <label for="club">Club</label>
+                <input
+                  id="club"
+                  name="club"
+                  type="text"
+                  placeholder="Club (e.g., Santos (BRA))"
+                />
+              </div>
+            </form>
+          </section>
+
+          <section id="result-section">
+            <div id="sticker-card" class="sticker-card" aria-live="polite">
+              <img
+                id="sticker-top-logo"
+                src="./assets/images/logos/fifa-world-cup-2026-logo.png"
+                alt="World Cup 2026 logo"
+              />
+
+              <img
+                id="sticker-overlay"
+                src="assets/images/overlays/silhouette-overlay.png"
+                alt="Sticker overlay shape"
+              />
+
+              <div id="sticker-top">
+                <div id="sticker-main">
+                  <div class="sticker-photo-wrap">
+                    <img
+                      id="sticker-player-image"
+                      class="sticker-player-image"
+                      src="assets/images/person-silhouette.png"
+                      alt="Player photo"
+                    />
+                  </div>
+
+                  <div id="sticker-info-block">
+                    <section class="sticker-content" aria-label="player info">
+                      <h2 id="sticker-player-name"></h2>
+                      <p id="sticker-player-meta"></p>
+                    </section>
+                  </div>
+                </div>
+
+                <div class="sticker-country">
+                  <div id="sticker-country-image-shell">
+                    <div id="sticker-country-image-frame">
+                      <img
+                        id="sticker-country-image"
+                        src="#"
+                        alt="Country Flag"
+                      />
+                    </div>
+                  </div>
+                  <p id="sticker-country-name" aria-hidden="true"></p>
+                </div>
+              </div>
+
+              <div id="sticker-club-row">
+                <section class="sticker-content" aria-label="club">
+                  <p id="sticker-club"></p>
+                </section>
+                <img
+                  id="sticker-panini-logo"
+                  src="assets/images/logos/panini-logo.svg"
+                  alt="Panini Logo"
+                />
+              </div>
+            </div>
+
+            <div id="sticker-actions">
+              <button id="download-btn" class="download-btn" type="button">
+                <img
+                  id="downloadIcon"
+                  src="assets/images/icons/download-icon.svg"
+                  alt="Download icon"
+                />
+                Download Sticker
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="footnote" aria-hidden="false">
+        Your data is not saved — it stays in your browser only and will be lost
+        if you refresh the page.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
