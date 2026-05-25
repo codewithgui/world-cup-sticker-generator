@@ -33,7 +33,9 @@ const countrySelect = document.getElementById('country');
 const stickerPlayerImage = document.getElementById('sticker-player-image');
 const stickerPlayerName = document.getElementById('sticker-player-name');
 const stickerPlayerMeta = document.getElementById('sticker-player-meta');
-const stickerCountryImage = document.getElementById('sticker-country-image');
+const stickerCountryFrame = document.getElementById(
+  'sticker-country-image-frame',
+);
 const stickerCountryName = document.getElementById('sticker-country-name');
 const stickerClub = document.getElementById('sticker-club');
 const stickerOverlay = document.getElementById('sticker-overlay');
@@ -200,12 +202,15 @@ function renderSticker() {
   }
 
   const selected = selectedCountry;
-  if (selected && stickerCountryImage) {
-    const imgName =
-      selected.flagImage ||
-      `${selected.name.toLowerCase().replace(/\s+/g, '-')}.png`;
-    stickerCountryImage.src = `../assets/images/flags/${imgName}`;
-    stickerCountryImage.alt = `Bandeira de ${getCountryLabel(selected.name)}`;
+
+  if (stickerCountryFrame) {
+    const imgName = selected
+      ? selected.flagImage ||
+        `${selected.name.toLowerCase().replace(/\s+/g, '-')}.png`
+      : '';
+    stickerCountryFrame.style.backgroundImage = selected
+      ? `url('../assets/images/flags/${imgName}')`
+      : 'none';
   }
 
   if (stickerOverlay) {

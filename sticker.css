@@ -81,18 +81,13 @@
 
 #sticker-country-image-frame {
   background-color: #ffffff14;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 2px solid #fff;
   overflow: hidden;
   height: 100%;
   width: 100%;
-}
-
-#sticker-country-image-frame img {
-  display: block;
-  height: auto;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 #sticker-country-name {
