@@ -22,7 +22,7 @@ export const COUNTRIES = [
   },
   {
     name: 'Germany',
-    code: 'DEU',
+    code: 'GER',
     flag: '🇩🇪',
     flagImage: 'germany.png',
     colors: ['#000000', '#dd0000'],
@@ -36,21 +36,21 @@ export const COUNTRIES = [
   },
   {
     name: 'England',
-    code: 'GBR',
+    code: 'ENG',
     flag: '🏴',
     flagImage: 'england.png',
     colors: ['#ffffff', '#ce1124'],
   },
   {
     name: 'Portugal',
-    code: 'PRT',
+    code: 'POR',
     flag: '🇵🇹',
     flagImage: 'portugal.png',
     colors: ['#006600', '#ff0000'],
   },
   {
     name: 'Netherlands',
-    code: 'NLD',
+    code: 'NED',
     flag: '🇳🇱',
     flagImage: 'netherlands.png',
     colors: ['#ff6600', '#ffffff'],
