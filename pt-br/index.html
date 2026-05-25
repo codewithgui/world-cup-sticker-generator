@@ -64,6 +64,7 @@
                   id="name"
                   name="name"
                   type="text"
+                  maxlength="24"
                   placeholder="Digite o nome do jogador"
                   required
                 />
@@ -81,8 +82,10 @@
                     id="height"
                     name="height"
                     type="number"
-                    min="100"
-                    max="250"
+                    step="1"
+                    inputmode="numeric"
+                    min="0"
+                    max="300"
                     placeholder="175"
                     required
                   />
@@ -93,8 +96,10 @@
                     id="weight"
                     name="weight"
                     type="number"
-                    min="30"
-                    max="150"
+                    step="1"
+                    inputmode="numeric"
+                    min="0"
+                    max="300"
                     placeholder="70"
                     required
                   />
@@ -122,6 +127,7 @@
                   id="club"
                   name="club"
                   type="text"
+                  maxlength="40"
                   placeholder="Clube (ex.: Santos (BRA))"
                 />
               </div>

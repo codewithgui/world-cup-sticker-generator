@@ -74,6 +74,15 @@ function formatHeight(cm) {
   return `${meters.toFixed(2).replace('.', ',')}m`;
 }
 
+function clampNumericInput(value, min, max) {
+  if (value === '') return '';
+
+  const parsed = Number.parseInt(value, 10);
+  if (Number.isNaN(parsed)) return '';
+
+  return String(Math.min(max, Math.max(min, parsed)));
+}
+
 function getSelectedCountry() {
   return countries.find((country) => country.name === formData.country);
 }
@@ -107,6 +116,20 @@ function handlePhotoUpload(event) {
 
 function updateFormData(event) {
   const { name, type, value, checked } = event.target;
+  if (name === 'height') {
+    event.target.value = clampNumericInput(value, 0, 300);
+    formData[name] = event.target.value;
+    renderSticker();
+    return;
+  }
+
+  if (name === 'weight') {
+    event.target.value = clampNumericInput(value, 0, 300);
+    formData[name] = event.target.value;
+    renderSticker();
+    return;
+  }
+
   formData[name] = type === 'checkbox' ? checked : value;
   renderSticker();
 }
